@@ -270,16 +270,13 @@ These are the only results currently reported — obtained from our own lab test
 
 | Role | Responsibilities | GitHub |
 |---|---|---|
-| Backend & Wazuh Infrastructure | Ubuntu server, Wazuh Manager/Indexer, agents, FIM config | `@teammate1` |
-| Frontend & Dashboard | GuardX UI, branding, charts, endpoint & alert views | `@teammate2` |
-| Research & Documentation | Research paper, literature survey, methodology | `@teammate3` |
-| Testing & QA | Test cases, FIM testing, multi-agent testing, results | `@teammate4` |
-| Presentation & Demo | Slides, architecture diagrams, demo script | `@teammate5` |
-
-*Replace the placeholders above with your team's actual names and GitHub handles.*
+| Backend & Wazuh Infrastructure | Ubuntu server, Wazuh Manager/Indexer, agents, FIM configuration | [@yoga0061](https://github.com/yoga0061) |
+| Frontend & Dashboard | GuardX UI, branding, charts, endpoint & alert views | [@yoga0061](https://github.com/yoga0061) |
+| Research & Documentation | Research paper, literature survey, methodology | [@teammate3](https://github.com/teammate3) |
+| Testing & QA | Test cases, FIM testing, multi-agent testing, results | [@teammate4](https://github.com/teammate4) |
+| Presentation & Demo | Slides, architecture diagrams, demo script | [@teammate5](https://github.com/teammate5) |
 
 ---
-
 ## 🤝 Contributing
 
 GuardX is currently a B.Tech CSE academic project, but suggestions, bug reports, and ideas are welcome:
