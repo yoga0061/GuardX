@@ -1,7 +1,7 @@
 <a name="top"></a>
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=220&section=header&text=GuardX&fontSize=72&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Lightweight%20Endpoint%20Security%20Monitoring%20%26%20Integrity%20Detection%20Platform&descSize=17&descAlignY=52" width="100%" alt="GuardX banner"/>
+<img src="banner.png" width="100%" alt="GuardX banner"/>
 
 <a href="https://git.io/typing-svg">
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&duration=3000&pause=900&color=2EE6A6&center=true&vCenter=true&width=650&lines=Centralized+Endpoint+Monitoring;Real-Time+File+Integrity+Monitoring;Powered+by+the+Wazuh+Security+Engine;B.Tech+CSE+Cybersecurity+Mini+Project" alt="Typing SVG"/>
@@ -16,7 +16,6 @@
 <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="license"/>
 
 <br/><br/>
-
 **GuardX** is a lightweight, centralized endpoint security monitoring and file-integrity detection platform, built on top of the open-source **[Wazuh](https://wazuh.com)** engine for a B.Tech CSE Cybersecurity mini project.
 
 </div>
