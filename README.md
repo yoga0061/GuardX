@@ -1,217 +1,318 @@
-# Wazuh
+<a name="top"></a>
+<div align="center">
 
-[![Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://wazuh.com/community/join-us-on-slack/)
-[![Email](https://img.shields.io/badge/email-join-blue.svg)](https://groups.google.com/forum/#!forum/wazuh)
-[![Documentation](https://img.shields.io/badge/docs-view-green.svg)](https://documentation.wazuh.com)
-[![Documentation](https://img.shields.io/badge/web-view-green.svg)](https://wazuh.com)
-[![Coverity](https://scan.coverity.com/projects/10992/badge.svg)](https://scan.coverity.com/projects/wazuh-wazuh)
-[![Twitter](https://img.shields.io/twitter/follow/wazuh?style=social)](https://twitter.com/wazuh)
-[![YouTube](https://img.shields.io/youtube/views/peTSzcAueEc?style=social)](https://www.youtube.com/watch?v=peTSzcAueEc)
+<img src="banner.png" width="100%" alt="GuardX banner"/>
 
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&duration=3000&pause=900&color=2EE6A6&center=true&vCenter=true&width=650&lines=Centralized+Endpoint+Monitoring;Real-Time+File+Integrity+Monitoring;Powered+by+the+Wazuh+Security+Engine;B.Tech+CSE+Cybersecurity+Mini+Project" alt="Typing SVG"/>
+</a>
 
-Wazuh is a free and open source platform used for threat prevention, detection, and response. It is capable of protecting workloads across on-premises, virtualized, containerized, and cloud-based environments.
+<br/>
 
-Wazuh solution consists of an endpoint security agent, deployed to the monitored systems, and a management server, which collects and analyzes data gathered by the agents. Besides, Wazuh is fully integrated with the Wazuh Indexer, providing a search engine and data visualization tool that allows users to navigate through their security alerts.
+<img src="https://img.shields.io/badge/status-in%20development-yellow?style=for-the-badge" alt="status"/>
+<img src="https://img.shields.io/badge/launch-~30%20days-orange?style=for-the-badge" alt="launch eta"/>
+<img src="https://img.shields.io/badge/powered%20by-Wazuh-1A73E8?style=for-the-badge" alt="powered by wazuh"/>
+<img src="https://img.shields.io/badge/platform-Ubuntu%2024.04%20LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="ubuntu"/>
+<img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="license"/>
 
-## Wazuh capabilities
+<br/><br/>
+**GuardX** is a lightweight, centralized endpoint security monitoring and file-integrity detection platform, built on top of the open-source **[Wazuh](https://wazuh.com)** engine for a B.Tech CSE Cybersecurity mini project.
 
-A brief presentation of some of the more common use cases of the Wazuh solution.
+</div>
 
-**Intrusion detection**
+---
 
-Wazuh agents scan the monitored systems looking for malware, rootkits and suspicious anomalies. They can detect hidden files, cloaked processes or unregistered network listeners, as well as inconsistencies in system call responses.
+> 🚧 **Actively in development.** The core Wazuh-based monitoring pipeline is live and verified — endpoint connection, real-time File Integrity Monitoring, and event detection are all working end-to-end. The custom GuardX dashboard and branding layer are being built now.
+> **Target launch: within the next 30 days.** ⭐ Star/watch the repo to get notified when it ships.
 
-In addition to agent capabilities, the server component uses a signature-based approach to intrusion detection, using its regular expression engine to analyze collected log data and look for indicators of compromise.
+---
 
-**Log data analysis**
+## 🧭 Table of Contents
 
-Wazuh agents read operating system and application logs, and securely forward them to a central manager for rule-based analysis and storage. When no agent is deployed, the server can also receive data via syslog from network devices or applications.
+- [About GuardX](#about-guardx)
+- [Problem Statement](#problem-statement)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Screenshots and Demo](#screenshots-and-demo)
+- [Getting Started](#getting-started)
+- [Roadmap](#roadmap)
+- [Verified Results](#verified-results)
+- [Limitations](#limitations)
+- [Team](#team)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
+- [Contact](#contact)
 
-The Wazuh rules help make you aware of application or system errors, misconfigurations, attempted and/or successful malicious activities, policy violations and a variety of other security and operational issues.
+---
 
-**File integrity monitoring**
+## 🎯 About GuardX
 
-Wazuh monitors the file system, identifying changes in content, permissions, ownership, and attributes of files that you need to keep an eye on. In addition, it natively identifies users and applications used to create or modify files.
+Small labs, colleges, and individual setups often lack an affordable, easy-to-use way to get a **centralized view** of endpoint security — file changes, security events, suspicious activity, and alerts, all in one place.
 
-File integrity monitoring capabilities can be used in combination with threat intelligence to identify threats or compromised hosts. In addition, several regulatory compliance standards, such as PCI DSS, require it.
+**GuardX** addresses this by using **Wazuh** as the underlying monitoring engine and wrapping it in a purpose-built project identity: a customized interface, dashboard, and workflow designed for clear, simple security demonstrations.
 
-**Vulnerability detection**
+> **Important — technical honesty:** GuardX is **not** a SIEM/EDR engine built from scratch. It is a customized and extended endpoint security monitoring platform built **on top of** the open-source Wazuh engine. Wazuh provides the core detection, agent, and analytics capability; GuardX provides project-specific customization, branding, dashboard design, and integration work on top of it. Core Wazuh security functionality is never altered for the sake of cosmetic branding.
 
-Wazuh agents pull software inventory data and send this information to the server, where it is correlated with continuously updated CVE (Common Vulnerabilities and Exposure) databases, in order to identify well-known vulnerable software.
+---
 
-Automated vulnerability assessment helps you find the weak spots in your critical assets and take corrective action before attackers exploit them to sabotage your business or steal confidential data.
+## 🧩 Problem Statement
 
-**Configuration assessment**
+- Traditional endpoint security tools often protect individual machines but don't provide a **centralized view** across a fleet.
+- Small organizations, labs, and colleges frequently lack **affordable, easy-to-deploy** security monitoring.
+- There's no simple way to see endpoint status, file integrity, and security alerts **in one dashboard** without enterprise-grade tooling.
+- GuardX solves this at a lab/demo scale using a proven open-source engine (Wazuh) behind a simplified, purpose-built interface.
 
-Wazuh monitors system and application configuration settings to ensure they are compliant with your security policies, standards and/or hardening guides. Agents perform periodic scans to detect applications that are known to be vulnerable, unpatched, or insecurely configured.
+---
 
-Additionally, configuration checks can be customized, tailoring them to properly align with your organization. Alerts include recommendations for better configuration, references and mapping with regulatory compliance.
+## ⚡ Key Features
 
-**Incident response**
+| Feature | Description | Status |
+|---|---|---|
+| Endpoint Registration & Status | Track connected, disconnected, and pending endpoints | ✅ Working |
+| File Integrity Monitoring (FIM) | Real-time detection of file creation, modification, deletion | ✅ Working |
+| Security Event Collection | Centralized collection of endpoint security events | ✅ Working |
+| Endpoint Information | OS, agent version, agent status, IP details | ✅ Working |
+| Centralized Multi-Agent Monitoring | 3–5 endpoints (Windows + Linux) from one server | 🔧 In Progress |
+| Security Alert Visualization | Critical / High / Medium / Low severity breakdown | 🔧 In Progress |
+| Custom GuardX Dashboard & Branding | Branded UI, theme, logo, and terminology | 🔧 In Progress |
+| AI-Assisted Alert Analysis | Advisory-only summaries, risk level, recommendations | 📋 Planned |
+| Notifications & Reports | Email/Telegram alerts, automated security reports | 📋 Planned |
 
-Wazuh agents provide out-of-the-box active responses to perform various countermeasures to address active threats, such as blocking access to a system from the threat source when certain criteria are met.
+---
 
-In addition, Wazuh can be used to remotely run commands or system queries on agents, identifying indicators of compromise (IOCs) and helping perform other live forensics or incident response tasks.
+## 🏗️ Architecture
 
-**Regulatory compliance**
+```mermaid
+flowchart TD
+    subgraph EP["Monitored Endpoints"]
+        E1[Windows Endpoint<br/>JARVIS]
+        E2[Windows Endpoint]
+        E3[Linux Endpoint]
+    end
 
-Wazuh provides some of the necessary security controls to become compliant with industry standards and regulations. These features, combined with its scalability and multi-platform support help organizations meet technical compliance requirements.
+    subgraph AG["Wazuh Agents"]
+        A1[Agent 001]
+        A2[Agent 002]
+        A3[Agent 003]
+    end
 
-Wazuh is widely used by payment processing companies and financial institutions to meet PCI DSS (Payment Card Industry Data Security Standard) requirements. Its web user interface provides reports and dashboards that can help with this and other regulations (e.g. GPG13 or GDPR).
+    E1 --> A1
+    E2 --> A2
+    E3 --> A3
 
-**Cloud security**
+    A1 & A2 & A3 --> WM[Wazuh Manager]
+    WM --> WI[(Wazuh Indexer<br/>OpenSearch-based)]
+    WM --> WD[Wazuh Dashboard / API]
+    WD --> GX[GuardX Custom UI<br/>Branding + Widgets]
 
-Wazuh helps monitoring cloud infrastructure at an API level, using integration modules that are able to pull security data from well known cloud providers, such as Amazon AWS, Azure or Google Cloud. In addition, Wazuh provides rules to assess the configuration of your cloud environment, easily spotting weaknesses.
+    style GX fill:#2c5364,stroke:#0f2027,color:#fff,stroke-width:2px
+```
 
-In addition, Wazuh light-weight and multi-platform agents are commonly used to monitor cloud environments at the instance level.
+**Data flow:** `Endpoint → Agent → Manager → Indexer → Dashboard → GuardX Layer`
 
-**Containers security**
+Each endpoint runs a Wazuh Agent that forwards file-integrity and security events to the central **Wazuh Manager**, which stores them in the **Wazuh Indexer** (OpenSearch-based) and exposes them via the **Wazuh Dashboard/API** — the data source that the custom **GuardX UI** builds on top of.
 
-Wazuh provides security visibility into your Docker hosts and containers, monitoring their behavior and detecting threats, vulnerabilities and anomalies. The Wazuh agent has native integration with the Docker engine allowing users to monitor images, volumes, network settings, and running containers.
+<details>
+<summary>Lab environment details</summary>
 
-Wazuh continuously collects and analyzes detailed runtime information. For example, alerting for containers running in privileged mode, vulnerable applications, a shell running in a container, changes to persistent volumes or images, and other possible threats.
+| Component | Detail |
+|---|---|
+| Host | Windows 11 laptop |
+| Virtualization | Oracle VirtualBox (NAT networking) |
+| Server VM | Ubuntu Server 24.04.4 LTS |
+| VM Resources | ~4 GB RAM · ~50 GB disk |
+| Server Private IP | `10.0.2.15` |
+| Dashboard Access | `https://127.0.0.1:8443` |
 
-## WUI
+</details>
 
-The Wazuh WUI provides a powerful user interface for data visualization and analysis. This interface can also be used to manage Wazuh configuration and to monitor its status.
+---
 
-**Modules overview**
+## 🧰 Tech Stack
 
-![Modules overview](https://github.com/wazuh/wazuh-dashboard-plugins/raw/main/screenshots/app.png)
+**Core Engine — implemented and running**
 
-**Security events**
+![Wazuh](https://img.shields.io/badge/Wazuh-1A73E8?style=flat-square) ![Ubuntu](https://img.shields.io/badge/Ubuntu%2024.04%20LTS-E95420?style=flat-square&logo=ubuntu&logoColor=white) ![VirtualBox](https://img.shields.io/badge/VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white) ![Windows](https://img.shields.io/badge/Windows%2011-0078D6?style=flat-square&logo=windows&logoColor=white) ![OpenSearch](https://img.shields.io/badge/OpenSearch-005EB8?style=flat-square&logo=opensearch&logoColor=white)
 
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app2.png)
+**GuardX Custom Layer — planned / in progress**
 
-**Integrity monitoring**
+![React](https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=black) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white)
 
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app3.png)
+> The exact custom frontend/backend choice (React vs. plain HTML/CSS/JS, Node/Express vs. Python FastAPI/Flask) is still being finalized — badges above reflect the options under consideration.
 
-**Vulnerability detection**
+---
 
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app4.png)
+## 📸 Screenshots and Demo
 
-**Regulatory compliance**
+<div align="center">
 
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app5.png)
+![Coming Soon](https://img.shields.io/badge/screenshots-coming%20soon-lightgrey?style=for-the-badge)
 
-**Agents overview**
+*The custom GuardX dashboard is currently being built. Screenshots and a short demo clip of live FIM detection (file created → modified → deleted, reflected in the dashboard in real time) will be added here as they're ready.*
 
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app6.png)
+</div>
 
-**Agent summary**
-
-![Overview](https://github.com/wazuh/wazuh-dashboard-plugins/blob/main/screenshots/app7.png)
-
-## Orchestration
-
-Here you can find all the automation tools maintained by the Wazuh team.
-
-* [Wazuh AWS CloudFormation](https://github.com/wazuh/wazuh-cloudformation)
-
-* [Docker containers](https://github.com/wazuh/wazuh-docker)
-
-* [Wazuh Ansible](https://github.com/wazuh/wazuh-ansible)
-
-* [Wazuh Chef](https://github.com/wazuh/wazuh-chef)
+---
 
-* [Wazuh Puppet](https://github.com/wazuh/wazuh-puppet)
-
-* [Wazuh Kubernetes](https://github.com/wazuh/wazuh-kubernetes)
-
-* [Wazuh Bosh](https://github.com/wazuh/wazuh-bosh)
-
-* [Wazuh Salt](https://github.com/wazuh/wazuh-salt)
-
-## Branches
-
-* `main` branch contains the latest code, be aware of possible bugs on this branch.
-
-## Software and libraries used
-
-<!-- third-party:begin -->
-| Software                                                                | Version    | Author                          | License                                                                      |
-| ----------------------------------------------------------------------- | ---------- | ------------------------------- | ---------------------------------------------------------------------------- |
-| [abseil-cpp](https://github.com/abseil/abseil-cpp)                      | 20240116.3 | Google Inc.                     | Apache 2.0 License                                                           |
-| [asio](https://github.com/chriskohlhoff/asio)                           | 1.38.2     | Christopher M. Kohlhoff         | Boost Software License 1.0                                                   |
-| [bzip2](https://github.com/libarchive/bzip2)                            | 1.0.8      | Julian Seward                   | BSD License                                                                  |
-| [cJSON](https://github.com/DaveGamble/cJSON)                            | 1.7.18     | Dave Gamble                     | MIT License                                                                  |
-| [concurrentqueue](https://github.com/cameron314/concurrentqueue)        | 1.0.4      | Cameron Desrochers              | BSD 2-Clause or Boost Software License 1.0                                   |
-| [cpp-httplib](https://github.com/yhirose/cpp-httplib)                   | 0.25.0     | yhirose                         | MIT License                                                                  |
-| [cPython](https://github.com/python/cpython)                            | 3.12.14    | Guido van Rossum                | Python Software Foundation License version 2                                 |
-| [cURL](https://github.com/curl/curl)                                    | 8.20.0     | Daniel Stenberg                 | curl License                                                                 |
-| [dbus](https://gitlab.freedesktop.org/dbus/dbus)                        | 1.14.10    | freedesktop.org                 | GNU Public License version 2                                                 |
-| [expected-lite](https://github.com/martinmoene/expected-lite)           | 0.10.0     | Martin Moene                    | Boost Software License 1.0                                                   |
-| [fast_float](https://github.com/fastfloat/fast_float)                   | 6.1.4      | Daniel Lemire et al.            | Apache 2.0, Boost 1.0 or MIT License                                         |
-| [Flatbuffers](https://github.com/google/flatbuffers/)                   | 23.5.26    | Google Inc.                     | Apache 2.0 License                                                           |
-| [fmt](https://github.com/fmtlib/fmt)                                    | 8.1.1      | Victor Zverovich                | MIT License                                                                  |
-| [Google Benchmark](https://github.com/google/benchmark)                 | 1.6.1      | Google Inc.                     | Apache 2.0 License                                                           |
-| [GoogleTest](https://github.com/google/googletest)                      | 1.11.0     | Google Inc.                     | 3-Clause "New" BSD License                                                   |
-| [Hinnant date](https://github.com/HowardHinnant/date)                   | 3.0.1      | Howard Hinnant                  | MIT License                                                                  |
-| [IANA tzdata](https://data.iana.org/time-zones/)                        | 2026a      | IANA / tz contributors          | Public Domain                                                                |
-| [jemalloc](https://github.com/jemalloc/jemalloc)                        | 5.2.1      | Jason Evans                     | 2-Clause "Simplified" BSD License                                            |
-| [jwt-cpp](https://github.com/Thalhammer/jwt-cpp)                        | 0.7.2      | Dominik Thalhammer              | MIT License                                                                  |
-| [libbpf](https://github.com/libbpf/libbpf)                              | 1.7.0      | libbpf                          | GNU Lesser General Public License version 2.1                                |
-| [libdb](https://github.com/yasuhirokimura/db18)                         | 18.1.40    | Oracle Corporation              | Affero GPL v3                                                                |
-| [libffi](https://github.com/libffi/libffi)                              | 3.2.1      | Anthony Green                   | MIT License                                                                  |
-| [libgcc_s](https://gcc.gnu.org/)                                        | GCC 14     | Free Software Foundation, Inc.  | GNU Public License version 3 or later with the GCC Runtime Library Exception |
-| [libmaxminddb](https://github.com/maxmind/libmaxminddb)                 | 1.9.1      | MaxMind, Inc.                   | Apache 2.0 License                                                           |
-| [libpcre2](https://github.com/PCRE2Project/pcre2)                       | 10.42      | Philip Hazel                    | BSD License                                                                  |
-| [libplist](https://github.com/libimobiledevice/libplist)                | 2.2.0      | Aaron Burghardt et al.          | GNU Lesser General Public License version 2.1                                |
-| [libstdc++](https://gcc.gnu.org/)                                       | GCC 14     | Free Software Foundation, Inc.  | GNU Public License version 3 or later with the GCC Runtime Library Exception |
-| [libYAML](https://github.com/yaml/libyaml)                              | 0.2.1      | Kirill Simonov                  | MIT License                                                                  |
-| [Linux Audit userspace](https://github.com/linux-audit/audit-userspace) | 2.8.4      | Rik Faith                       | GNU Lesser General Public License version 2.1                                |
-| [llhttp](https://github.com/nodejs/llhttp)                              | 9.4.2      | Fedor Indutny                   | MIT License                                                                  |
-| [Lua](https://github.com/lua/lua)                                       | 5.4.8      | PUC-Rio                         | MIT License                                                                  |
-| [nlohmann](https://github.com/nlohmann/json)                            | 3.11.2     | Niels Lohmann                   | MIT License                                                                  |
-| [OpenSSL](https://github.com/openssl/openssl)                           | 3.6.2      | OpenSSL Software Foundation     | Apache 2.0 License                                                           |
-| [popt](https://github.com/rpm-software-management/popt)                 | 1.18       | Jeff Johnson & Erik Troan       | MIT License                                                                  |
-| [procps](https://gitlab.com/procps-ng/procps)                           | 3.2.8      | Brian Edmonds et al.            | GNU Library General Public License version 2                                 |
-| [protobuf](https://github.com/protocolbuffers/protobuf)                 | 3.21.12    | Google Inc.                     | 3-Clause "New" BSD License                                                   |
-| [pugixml](https://github.com/zeux/pugixml)                              | 1.15       | Arseny Kapoulkine               | MIT License                                                                  |
-| [RapidJSON](https://github.com/Tencent/rapidjson)                       | 1.1.0      | THL A29 Limited and Milo Yip    | MIT License                                                                  |
-| [RE2](https://github.com/google/re2)                                    | 2024-06-01 | The RE2 Authors                 | 3-Clause "New" BSD License                                                   |
-| [RESTinio](https://github.com/Stiffstream/restinio)                     | 0.7.10     | Stiffstream                     | BSD 3-Clause, Boost 1.0, MIT and zlib Licenses                               |
-| [RocksDB](https://github.com/facebook/rocksdb/)                         | 8.3.2      | Facebook Inc.                   | Apache 2.0 License                                                           |
-| [rpm](https://github.com/rpm-software-management/rpm)                   | 4.20.1     | Marc Ewing & Erik Troan         | GNU Public License version 2                                                 |
-| [RxCpp](https://github.com/ReactiveX/RxCpp)                             | 4.1.1      | RxCpp contributors              | Apache 2.0 License                                                           |
-| [simdjson](https://github.com/simdjson/simdjson)                        | 3.13.0     | Daniel Lemire                   | Apache License 2.0 or MIT License                                            |
-| [spdlog](https://github.com/gabime/spdlog)                              | 1.14.1     | Gabi Melman                     | MIT License                                                                  |
-| [sqlite](https://github.com/sqlite/sqlite)                              | 3.53.1     | D. Richard Hipp                 | Public Domain (no restrictions)                                              |
-| [Taskflow](https://github.com/taskflow/taskflow)                        | 3.7.0      | Tsung-Wei Huang                 | MIT License                                                                  |
-| [yaml-cpp](https://github.com/jbeder/yaml-cpp)                          | 0.8.0      | Jesse Beder                     | MIT License                                                                  |
-| [zlib](https://github.com/madler/zlib)                                  | 1.3.1      | Jean-loup Gailly & Mark Adler   | zlib/libpng License                                                          |
-| [zstd](https://github.com/facebook/zstd)                                | 1.5.7      | Meta Platforms, Inc. (Facebook) | 3-Clause "New" BSD License                                                   |
-<!-- third-party:end -->
-
-* [PyPi packages](framework/requirements.txt)
-
-## Documentation
-
-* [Full documentation](http://documentation.wazuh.com)
-* [Wazuh installation guide](https://documentation.wazuh.com/current/installation-guide/index.html)
-
-## Get involved
-
-Become part of the [Wazuh's community](https://wazuh.com/community/) to learn from other users, participate in discussions, talk to our developers and contribute to the project.
-
-If you want to contribute to our project please don’t hesitate to make pull-requests, submit issues or send commits, we will review all your questions.
-
-You can also join our [Slack community channel](https://wazuh.com/community/join-us-on-slack/) and [mailing list](https://groups.google.com/d/forum/wazuh) by sending an email to [wazuh+subscribe@googlegroups.com](mailto:wazuh+subscribe@googlegroups.com), to ask questions and participate in discussions.
-
-Stay up to date on news, releases, engineering articles and more.
-
-* [Wazuh website](http://wazuh.com)
-* [Linkedin](https://www.linkedin.com/company/wazuh)
-* [YouTube](https://www.youtube.com/c/wazuhsecurity)
-* [Twitter](https://twitter.com/wazuh)
-* [Wazuh blog](https://wazuh.com/blog/)
-* [Slack announcements channel](https://wazuh.com/community/join-us-on-slack/)
-
-## Authors
-
-Copyright (C) Wazuh Inc.
-
-Based on the OSSEC project started by Daniel Cid.
-
-The Wazuh engine (`src/engine/`, installed as `wazuh-manager-analysisd`) is licensed under the GNU Affero General Public License v3.0 or later. See [src/engine/COPYING-engine](src/engine/COPYING-engine) and [src/engine/LICENSE-engine](src/engine/LICENSE-engine). The shared libraries it links together with the rest of the manager and the agent (`src/shared_modules/utils`, `manager_config`, `keystore`, `indexer_connector`, `common` and the `http-request` submodule) are dual-licensed under GPLv2 or AGPLv3 (`GPL-2.0-only OR AGPL-3.0-or-later`). Everything else is licensed under GPLv2; see [LICENSE](LICENSE).
+## 🚀 Getting Started
+
+### Prerequisites
+- A host machine capable of running **Oracle VirtualBox**
+- **Ubuntu Server 24.04.4 LTS** ISO
+- ~4 GB RAM and ~50 GB disk to allocate to the server VM
+- A **Windows 11** (or Linux) machine/VM to act as a monitored endpoint
+
+### 1. Set up the GuardX server
+- Create an Ubuntu Server 24.04.4 LTS VM in VirtualBox using NAT networking
+- Install Wazuh (Manager + Indexer + Dashboard) — follow the [official Wazuh quickstart guide](https://documentation.wazuh.com/current/quickstart.html)
+- Configure port forwarding on the host:
+
+| Host Port | Guest Port | Purpose |
+|---|---|---|
+| 8443 | 443 | Dashboard access |
+| 1514 | 1514 | Agent event communication |
+| 1515 | 1515 | Agent enrollment |
+| 55000 | 55000 | Wazuh API |
+
+- Access the dashboard at `https://127.0.0.1:8443`
+
+### 2. Connect an endpoint
+- Install the Wazuh Agent on your Windows/Linux endpoint
+- Enroll the agent against the GuardX server
+- Confirm the endpoint shows as **Active** in the dashboard
+
+### 3. Enable File Integrity Monitoring
+Add a monitored directory to the agent's `ossec.conf`:
+
+```xml
+<directories realtime="yes">C:\GuardX-Test</directories>
+```
+
+Restart the agent, then create, modify, and delete a file inside that folder — events should appear in the dashboard in real time.
+
+### 4. Run the GuardX dashboard — *coming soon*
+Setup instructions for the custom GuardX frontend/backend will be added here once that layer is published.
+
+---
+
+## 🗺️ Roadmap
+
+**Phase 1 — Core Monitoring Pipeline** ✅ *Complete*
+- [x] Ubuntu Server 24.04.4 LTS deployed
+- [x] Wazuh Manager, Indexer, and Dashboard installed and accessible
+- [x] VirtualBox NAT networking and port forwarding configured
+- [x] Windows 11 endpoint connected and enrolled (`JARVIS`, Agent 002)
+- [x] Real-time FIM enabled on `C:\GuardX-Test`
+- [x] File creation, modification, and deletion detection verified end-to-end
+
+**Phase 2 — GuardX Custom Layer** 🔧 *In progress — launching in ~30 days*
+- [ ] Custom GuardX-branded dashboard UI
+- [ ] Multi-agent support (3–5 endpoints, including a Linux agent)
+- [ ] Security alert visualization by severity
+- [ ] Centralized endpoint status and information view
+- [ ] GuardX theme, logo, favicon, and navigation terminology
+
+**Phase 3 — Stretch Goals** 📋 *Future scope*
+- [ ] AI-assisted alert summarization (advisory-only — never autonomous remediation)
+- [ ] Automated security report generation
+- [ ] Email / Telegram notifications
+- [ ] Role-based access control
+- [ ] MITRE ATT&CK visualization
+
+<details>
+<summary>Full long-term future scope</summary>
+
+- Support for 50+ endpoints
+- Linux and macOS agent support
+- Mobile endpoint monitoring, where feasible
+- Vulnerability management integration
+- Threat intelligence integration
+- Cloud deployment
+- Container monitoring
+- Network security monitoring
+- Security incident response workflow
+
+</details>
+
+---
+
+## ✅ Verified Results
+
+These are the only results currently reported — obtained from our own lab testing, with nothing fabricated:
+
+- Ubuntu Server deployed; Wazuh Manager, Indexer, and Dashboard running successfully
+- Windows 11 endpoint connected and shown as **Active**
+- Real-time File Integrity Monitoring enabled on a dedicated `C:\GuardX-Test` directory
+- **File creation** correctly detected and logged as *File Added*
+- **File modification** correctly detected and logged as *File Modified*
+- **File deletion** correctly detected and logged as *File Deleted*
+
+> We intentionally don't report accuracy percentages, detection rates, or performance benchmarks until we run controlled experiments to actually measure them.
+
+---
+
+## ⚠️ Limitations
+
+- Small-scale lab deployment, not a production system
+- Built on top of Wazuh — GuardX does not reimplement core SIEM/EDR logic
+- Currently tested with a small number of agents (target: 3–5 for the MVP demo)
+- Uses VirtualBox NAT networking for the demonstration environment
+- The custom GuardX dashboard currently depends on Wazuh's APIs and data
+- Any AI-assisted analysis is advisory-only and never takes automated action
+- Not intended to replace enterprise SOC infrastructure
+- Production use would require stronger authentication, network hardening, backups, and scaling
+
+---
+
+## 👥 Team
+
+| Role | Responsibilities | GitHub |
+|---|---|---|
+| Backend & Wazuh Infrastructure | Ubuntu server, Wazuh Manager/Indexer, agents, FIM configuration | [@yoga0061](https://github.com/yoga0061) |
+| Frontend & Dashboard | GuardX UI, branding, charts, endpoint & alert views | [@yoga0061](https://github.com/yoga0061) |
+| Research & Documentation | Research paper, literature survey, methodology | [@teammate3](https://github.com/teammate3) |
+| Testing & QA | Test cases, FIM testing, multi-agent testing, results | [@teammate4](https://github.com/teammate4) |
+| Presentation & Demo | Slides, architecture diagrams, demo script | [@teammate5](https://github.com/teammate5) |
+
+---
+## 🤝 Contributing
+
+GuardX is currently a B.Tech CSE academic project, but suggestions, bug reports, and ideas are welcome:
+
+1. Open an [issue](../../issues) describing the bug or suggestion
+2. Fork the repo and create a feature branch
+3. Submit a pull request with a clear description of your changes
+
+---
+
+## 🙏 Acknowledgments
+
+- **[Wazuh](https://wazuh.com/)** — the open-source security monitoring engine that powers GuardX's endpoint monitoring, FIM, and event collection. All core detection capability shown in this project belongs to the Wazuh project; see their [GitHub repository](https://github.com/wazuh/wazuh) and [official documentation](https://documentation.wazuh.com/) for details.
+- Our faculty guide and department for their support and guidance
+- The open-source community behind the tools in our custom stack
+
+---
+
+## 📄 License
+
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+This project is intended for academic and educational use.
+
+*Update this section once your team finalizes a license. Note that Wazuh itself is distributed under GNU GPLv2 — worth keeping in mind if you redistribute any Wazuh source or configuration files alongside GuardX.*
+
+---
+
+## 📬 Contact
+
+Questions or feedback? Open an [issue](../../issues) or reach out at `guardx.project@example.com`.
+
+<div align="center">
+
+[⬆ Back to top](#top)
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer" width="100%" alt="footer"/>
+
+</div>
